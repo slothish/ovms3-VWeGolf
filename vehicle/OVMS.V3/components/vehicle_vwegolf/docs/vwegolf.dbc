@@ -193,7 +193,7 @@ CM_ BO_ 1516 "KCAN. Secondary clima status byte from clima ECU. Observed 0x04=id
 CM_ BO_ 2536702224 "KCAN (extended 29-bit ID 0x17330110). J533 gateway BAP status broadcast, node 0x01. Port 0x1B carries real-time driver-zone setpoint; port 0x21 mirrors it for passenger zone. Encoding: raw = (setpoint_C - 10.0) * 10, LE uint16. Confirmed Capture 2. Multi-frame BAP — see bat-ctrl-bap.md.";
 CM_ BO_ 253 "KCAN. Vehicle speed from ESP. Confirmed from captures.";
 CM_ BO_ 305 "KCAN. State of charge from BMS. Confirmed. 0xFE is a startup sentinel (127.0%) — discard.";
-CM_ BO_ 401 "KCAN. HV bus current and voltage from BMS. Confirmed from captures.";
+CM_ BO_ 401 "FCAN. HV bus current and voltage from BMS. Not forwarded to KCAN by the J533 on at least one car: 0 frames across ~2.5M KCAN frames in 40 captures, including 3 dual-bus captures where FCAN carried 1.5k-4.6k 0x191 frames at the same time. Decoded values confirmed against UDS BMS DIDs 0x1E3B/0x1E3D within 0.5 A typical, 2 A max, voltage exact (charging, -80..+4 A). See docs/dev-findings.md.";
 CM_ BO_ 687 "KCAN. Trip energy counters from BMS. Encoding inferred; physical plausibility confirmed.";
 CM_ BO_ 1158 "KCAN. GPS position. Encoding inferred from RE. Sign bits for S/W hemisphere not yet decoded — positive values only.";
 CM_ BO_ 1411 "KCAN. ZV_02 central locking and door open status. Confirmed from captures.";
